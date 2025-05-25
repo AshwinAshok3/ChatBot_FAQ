@@ -5,7 +5,7 @@ import logging
 
 # Azure Function triggered by HTTP request
 def main(req: func.HttpRequest) -> func.HttpResponse:
-    logging.info("Processing an FAQ query request.")
+    logging.info("Processing an Pirate FAQ query request.")
 
     try:
         req_body = req.get_json()
@@ -17,9 +17,9 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
             return func.HttpResponse("Missing 'question' field", status_code=400)
 
         # Call Azure AI Foundry model endpoint
-        model_url = "https://YOUR_FOUNDATION_ENDPOINT"  # Replace with actual
+        model_url = "https://foundrychatbotfaq.cognitiveservices.azure.com/openai/deployments/gpt-4o-FAQ/chat/completions?api-version=2025-01-01-preview"
         headers = {
-            "Authorization": "Bearer YOUR_API_KEY",      # Replace with actual
+            "Authorization": "Bearer CqLzd2VjRbfgOwK8EpunRc9gXnAQJFTRZZYwUwCRd0M1tXI4WoIpJQQJ99BEACHYHv6XJ3w3AAAAACOGBUfx",
             "Content-Type": "application/json"
         }
 
