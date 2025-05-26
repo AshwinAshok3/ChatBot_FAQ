@@ -2,7 +2,7 @@
 import requests
 
 # Assigning the azure function app url to the variable
-AZURE_FUNCTION_URL = "https://chatbotfuncpirates.azurewebsites.net/api/faq_copilot"
+AZURE_FUNCTION_URL = "https://pirates-functions.azurewebsites.net/api/faq_copilot"
 
 
 # take the prompt from the user through endpoint into the model
