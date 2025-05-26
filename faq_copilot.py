@@ -1,8 +1,11 @@
+# importing libraries
 import requests
-import json
 
-AZURE_FUNCTION_URL = "https://<your-function-app>.azurewebsites.net/api/faqcopilot"
+# Assigning the azure function app url to the variable
+AZURE_FUNCTION_URL = "https://chatbotfuncpirates.azurewebsites.net/api/faq_copilot"
 
+
+# take the prompt from the user through endpoint into the model
 def send_question_to_backend(question, feedback=None, suggestion=None):
     """Send a question (optionally with feedback/suggestion) to Azure Function."""
     payload = {
@@ -26,26 +29,28 @@ def send_question_to_backend(question, feedback=None, suggestion=None):
     except Exception as e:
         return f"Exception occurred: {str(e)}"
 
+
 def main():
     """Main loop to interact with the FAQ Copilot."""
-    print("\n🧠 Welcome to the Simple FAQ Copilot!")
+    print("\nWelcome to the Pirate's FAQ Jack Sparrow's Copilot!")
     print("Type your question or 'exit' to quit.\n")
 
     while True:
-        question = input("🧑 You: ").strip()
+        question = input(" You: ").strip()
         if question.lower() == "exit":
-            print("👋 Goodbye!")
+            print(" Goodbye!")
             break
 
         answer = send_question_to_backend(question)
-        print(f"🤖 Copilot: {answer}")
+        print(f" Copilot: {answer}")
 
         feedback = input("Was this answer helpful? (yes/no): ").strip().lower()
         if feedback in ['yes', 'no']:
             suggestion = None
             if feedback == 'no':
-                suggestion = input("Suggest a better question to train the model (optional): ").strip()
+                suggestion = input("Suggest a better question to train the model : ").strip()
             send_question_to_backend(question, feedback=feedback, suggestion=suggestion)
+
 
 if __name__ == "__main__":
     main()
